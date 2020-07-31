@@ -1,0 +1,84 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://assets/player/slime_fall_jump0012.png" type="Texture" id=1]
+[ext_resource path="res://Player Scripts/Movement/States/jump_state.gd" type="Script" id=2]
+[ext_resource path="res://Player Scripts/player_state_machine.gd" type="Script" id=3]
+[ext_resource path="res://Player Scripts/Movement/States/walk_state.gd" type="Script" id=4]
+[ext_resource path="res://Player Scripts/Movement/States/idle_state.gd" type="Script" id=5]
+[ext_resource path="res://assets/player/slime_idle0003.png" type="Texture" id=6]
+[ext_resource path="res://assets/player/slime_idle0002.png" type="Texture" id=7]
+[ext_resource path="res://assets/player/slime_walk0006.png" type="Texture" id=8]
+[ext_resource path="res://assets/player/slime_walk0005.png" type="Texture" id=9]
+[ext_resource path="res://assets/player/slime_walk0007.png" type="Texture" id=10]
+[ext_resource path="res://Player Scripts/display_current_state.gd" type="Script" id=11]
+[ext_resource path="res://Player Scripts/Movement/States/fall_state.gd" type="Script" id=12]
+[ext_resource path="res://assets/player/slime_walk0008.png" type="Texture" id=13]
+[ext_resource path="res://Player Scripts/player_controller.gd" type="Script" id=14]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "idle",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": false,
+"name": "jump",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 8 ), ExtResource( 10 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 2.44815, 2.68936 )
+
+[node name="Player" type="KinematicBody2D"]
+collision/safe_margin = 0.01
+script = ExtResource( 14 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+position = Vector2( -0.111164, -3.25869 )
+frames = SubResource( 2 )
+animation = "idle"
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource( 3 )
+start_state = NodePath("Walk")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource( 5 )
+
+[node name="Walk" type="Node" parent="StateMachine"]
+script = ExtResource( 4 )
+
+[node name="Jump" type="Node" parent="StateMachine"]
+script = ExtResource( 2 )
+
+[node name="Fall" type="Node" parent="StateMachine"]
+script = ExtResource( 12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.0662155, -0.19865 )
+scale = Vector2( -1.49313, 1.45696 )
+shape = SubResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = -12.423
+margin_top = -18.6283
+margin_right = 27.577
+margin_bottom = -4.62832
+rect_scale = Vector2( 0.60057, 0.533332 )
+text = "Test"
+align = 1
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WallRayCast" type="Node2D" parent="."]
+position = Vector2( 0, 0.662912 )
+[connection signal="state_changed" from="StateMachine" to="Label" method="_on_StateMachine_state_changed"]

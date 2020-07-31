@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/player/jump_particles0012.png" type="Texture" id=1]
+[ext_resource path="res://assets/player/jump_particles0013.png" type="Texture" id=2]
+[ext_resource path="res://assets/player/jump_particles0014.png" type="Texture" id=3]
+[ext_resource path="res://PlayerEffects.gd" type="Script" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": false,
+"name": "jump_effect",
+"speed": 8.0
+} ]
+
+[node name="PlayerEffects" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="player_effects" type="AnimatedSprite" parent="."]
+position = Vector2( 0.353554, -10.9602 )
+frames = SubResource( 1 )
+animation = "jump_effect"

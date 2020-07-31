@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 21.5532 )
+
+[node name="Scene#ToScene#" type="Area2D"]
+monitorable = false
+
+[node name="PlayerDetection" type="CollisionShape2D" parent="."]
+scale = Vector2( -2.00534, -0.10086 )
+shape = SubResource( 1 )
