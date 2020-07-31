@@ -4,7 +4,7 @@ extends Node2D
 func _ready():
 	
 	
-	get_node("player_effects").play("jump_particles")
+	get_node("player_effects").play("jump_effect")
 	
 func _physics_process(delta):
 	

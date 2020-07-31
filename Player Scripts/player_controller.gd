@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var player_effects = load("res://PlayerEffects.tscn")
+var player_effects = load("res://Player Scripts/PlayerEffects.tscn")
 
 func play_anim(animation):
 	
