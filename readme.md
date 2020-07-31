@@ -1,4 +1,4 @@
-# RogueLite Platformer
+# Rogue Lite Platformer
 
 <a href="https://godotengine.org/">
     <img src="https://img.shields.io/badge/Godot v3.2-black?style=for-the-badge&logo=Godot-Engine"/>
