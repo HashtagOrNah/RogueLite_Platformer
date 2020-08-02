@@ -22,15 +22,15 @@ animations = [ {
 "name": "idle",
 "speed": 2.0
 }, {
-"frames": [ ExtResource( 9 ), ExtResource( 8 ), ExtResource( 10 ), ExtResource( 13 ) ],
-"loop": true,
-"name": "walk",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 1 ) ],
 "loop": false,
 "name": "jump",
 "speed": 1.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 8 ), ExtResource( 10 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -78,7 +78,4 @@ script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="WallRayCast" type="Node2D" parent="."]
-position = Vector2( 0, 0.662912 )
 [connection signal="state_changed" from="StateMachine" to="Label" method="_on_StateMachine_state_changed"]

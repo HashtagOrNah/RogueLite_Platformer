@@ -1,5 +1,7 @@
 extends "state_machine.gd"
 
+var double_jump = true
+
 func _ready():
 	states_map = {
 		"idle": $Idle,
@@ -12,6 +14,8 @@ func _change_state(state_name):
 
 	if not _active:
 		return
+	if not double_jump and state_name in ["walk", "idle"]:
+		double_jump = true
 	if state_name == "jump" and current_state == $Walk:
 		$Jump.initialize($Walk.velocity, null)
 	elif state_name == "jump" and current_state == $Jump:

@@ -6,9 +6,6 @@ var rotation_dir
 func initialize(prev_velocity, prev_state):
 	
 	enter_velocity = prev_velocity
-	
-	if prev_state == "jump":
-		double_jump = false
 
 func enter():
 	
@@ -23,8 +20,6 @@ func handle_input(event):
 	if event.is_action_released("jump"):
 		velocity.y = min_jump_velocity
 		emit_signal("finished", "fall")
-	
-	.handle_input(event)
 
 func update(delta):
 	
@@ -43,7 +38,6 @@ func update(delta):
 	
 func exit():
 	
-	double_jump = true
 	velocity = Vector2()
 	enter_velocity = Vector2()
 	

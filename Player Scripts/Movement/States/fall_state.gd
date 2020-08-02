@@ -16,6 +16,15 @@ func exit():
 	sprite.rotation_degrees = 0
 	prev_state_walk = false
 
+func handle_input(event):
+	
+	if get_parent().double_jump:
+		if event.is_action_pressed("jump"):
+			get_parent().double_jump = false
+			emit_signal("finished", "jump")
+	else:
+		.handle_input(event)
+
 func enter():
 	
 	var input_direction = get_input_direction(false)
