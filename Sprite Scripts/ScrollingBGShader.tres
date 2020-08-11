@@ -2,6 +2,7 @@
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
+
 uniform float scroll_speed;
 void fragment() {
 	

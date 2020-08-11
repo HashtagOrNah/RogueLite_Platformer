@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/bells_melody.ogg-f81661e993797852718f081aa0e17fab.oggstr"
+
+[deps]
+
+source_file="res://Music and SoundFX/bells_melody.ogg"
+dest_files=[ "res://.import/bells_melody.ogg-f81661e993797852718f081aa0e17fab.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
