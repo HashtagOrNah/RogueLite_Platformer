@@ -22,21 +22,23 @@ animations = [ {
 "name": "idle",
 "speed": 2.0
 }, {
-"frames": [ ExtResource( 1 ) ],
-"loop": false,
-"name": "jump",
-"speed": 1.0
-}, {
 "frames": [ ExtResource( 9 ), ExtResource( 8 ), ExtResource( 10 ), ExtResource( 13 ) ],
 "loop": true,
 "name": "walk",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "jump",
+"speed": 1.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 2.44815, 2.68936 )
 
 [node name="Player" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 2147483649
 collision/safe_margin = 0.01
 script = ExtResource( 14 )
 

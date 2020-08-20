@@ -1,0 +1,109 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/Animals/bird_fly0003.png" type="Texture" id=1]
+[ext_resource path="res://assets/Animals/bird_idle0000.png" type="Texture" id=2]
+[ext_resource path="res://assets/Animals/bird_idle0001.png" type="Texture" id=3]
+[ext_resource path="res://assets/Animals/bird_fly0004.png" type="Texture" id=4]
+[ext_resource path="res://AI Scripts/Bird Scripts/flying_state.gd" type="Script" id=5]
+[ext_resource path="res://AI Scripts/Bird Scripts/idle_state.gd" type="Script" id=6]
+[ext_resource path="res://AI Scripts/Bird Scripts/bird_state_machine.gd" type="Script" id=7]
+[ext_resource path="res://AI Scripts/Bird Scripts/bird_detect_player.gd" type="Script" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 0.531405, 1.26276 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "idle",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "flying",
+"speed": 4.0
+} ]
+
+[node name="Bird" type="KinematicBody2D"]
+collision_layer = 4
+collision_mask = 2147483653
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2( -0.525558, 0.525558 )
+scale = Vector2( 4.84559, 2.87141 )
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, 0.03125 )
+frames = SubResource( 2 )
+animation = "idle"
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource( 7 )
+start_state = NodePath("Idle")
+
+[node name="Flying" type="Node" parent="StateMachine"]
+script = ExtResource( 5 )
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource( 6 )
+
+[node name="FlyingRaycasts" type="Node2D" parent="."]
+script = ExtResource( 8 )
+
+[node name="Up" type="RayCast2D" parent="FlyingRaycasts"]
+position = Vector2( -0.435572, -3.26496 )
+rotation = -3.14159
+scale = Vector2( 0.335915, 0.178615 )
+enabled = true
+collision_mask = 7
+
+[node name="UpRight" type="RayCast2D" parent="FlyingRaycasts"]
+position = Vector2( 2.3256, -3.17727 )
+rotation = -2.35619
+scale = Vector2( 0.335915, 0.178615 )
+enabled = true
+collision_mask = 7
+
+[node name="Right" type="RayCast2D" parent="FlyingRaycasts"]
+position = Vector2( 2.37344, 0.416814 )
+rotation = -1.5708
+scale = Vector2( 0.335915, 0.178615 )
+enabled = true
+collision_mask = 7
+
+[node name="DownRight" type="RayCast2D" parent="FlyingRaycasts"]
+position = Vector2( 2.34857, 4.47456 )
+rotation = -0.785398
+scale = Vector2( 0.335915, 0.178615 )
+enabled = true
+collision_mask = 6
+
+[node name="Down" type="RayCast2D" parent="FlyingRaycasts"]
+position = Vector2( -0.179184, 4.58839 )
+scale = Vector2( 0.335915, 0.178615 )
+enabled = true
+collision_mask = 6
+
+[node name="DownLeft" type="RayCast2D" parent="FlyingRaycasts"]
+position = Vector2( -3.3935, 4.3215 )
+rotation = 0.785398
+scale = Vector2( 0.335915, 0.178615 )
+enabled = true
+collision_mask = 6
+
+[node name="Left" type="RayCast2D" parent="FlyingRaycasts"]
+position = Vector2( -3.47385, 0.475487 )
+rotation = 1.5708
+scale = Vector2( 0.335915, 0.178615 )
+enabled = true
+collision_mask = 7
+
+[node name="UpLeft" type="RayCast2D" parent="FlyingRaycasts"]
+position = Vector2( -3.47513, -3.26241 )
+rotation = 2.35619
+scale = Vector2( 0.335915, 0.178615 )
+enabled = true
+collision_mask = 7
+[connection signal="colliding" from="FlyingRaycasts" to="StateMachine" method="_on_FlyingRaycasts_colliding"]
