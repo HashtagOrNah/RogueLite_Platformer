@@ -7,6 +7,7 @@ var speed = 100
 func enter():
 	
 	owner.get_node("AnimatedSprite").play("flying")
+	owner.get_node("Particles2D").emitting = true
 	
 func update(_delta):
 	
@@ -27,3 +28,6 @@ func fly_away(coll_dir):
 	
 	if !(coll_dir == Vector2.UP):
 		velocity = speed * (-coll_dir+Vector2.UP)
+	
+	else:
+		velocity = speed*(-coll_dir)

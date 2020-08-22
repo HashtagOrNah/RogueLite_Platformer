@@ -3,7 +3,7 @@ extends Position2D
 var grid_size = Vector2(320,180)
 var grid_position = Vector2()
 
-onready var player = get_parent().get_node("Player")
+onready var player = get_node("../Player")
 onready var camera = get_node("SceneCamera")
 
 func _ready():

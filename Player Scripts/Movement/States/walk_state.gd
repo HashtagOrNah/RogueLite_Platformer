@@ -26,7 +26,7 @@ func update(_delta):
 	
 	var direction = get_input_direction(true)
 	velocity.x = min(abs(velocity.x) + ACCELERATION, MAX_WALK_SPEED) * direction
-	velocity.y += gravity
+	velocity.y = gravity
 	
 	velocity.x = lerp(velocity.x, 0, 0.2)
 	velocity = owner.move_and_slide(velocity, Vector2.UP)
