@@ -80,7 +80,7 @@ script = ExtResource( 8 )
 [node name="Up" type="RayCast2D" parent="FlyingRaycasts"]
 position = Vector2( -0.435572, -3.26496 )
 rotation = -3.14159
-scale = Vector2( 0.335915, 0.178615 )
+scale = Vector2( 0.440673, 0.163313 )
 enabled = true
 collision_mask = 7
 

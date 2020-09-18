@@ -1,6 +1,7 @@
-[gd_resource type="TileSet" load_steps=64 format=2]
+[gd_resource type="TileSet" load_steps=65 format=2]
 
 [ext_resource path="res://assets/tilemaps/rust_tile.png" type="Texture" id=1]
+[ext_resource path="res://assets/tilemaps/exit_portal.png" type="Texture" id=2]
 [ext_resource path="res://assets/tilemaps/grass_tile_full.png" type="Texture" id=3]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
@@ -646,3 +647,17 @@ points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 7/z_index = 0
+8/name = "exit_portal.png 8"
+8/texture = ExtResource( 2 )
+8/tex_offset = Vector2( 0, 0 )
+8/modulate = Color( 1, 1, 1, 1 )
+8/region = Rect2( 0, 0, 16, 16 )
+8/tile_mode = 0
+8/occluder_offset = Vector2( 0, 0 )
+8/navigation_offset = Vector2( 0, 0 )
+8/shape_offset = Vector2( 0, 0 )
+8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+8/shape_one_way = false
+8/shape_one_way_margin = 0.0
+8/shapes = [  ]
+8/z_index = 0

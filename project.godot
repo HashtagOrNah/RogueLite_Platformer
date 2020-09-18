@@ -18,9 +18,14 @@ _global_script_class_icons={
 config/name="Platformer"
 run/main_scene="res://HubWorld.tscn"
 
+[audio]
+
+default_bus_layout=""
+
 [autoload]
 
 Globals="*res://Globals.gd"
+SceneChanger="*res://SceneChanger.tscn"
 
 [debug]
 
@@ -94,4 +99,3 @@ freeze_time={
 
 quality/intended_usage/framebuffer_allocation=0
 quality/2d/use_pixel_snap=true
-environment/default_environment="res://default_env.tres"

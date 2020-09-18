@@ -2,7 +2,7 @@ extends "../base_state.gd"
 
 var velocity = Vector2()
 var gravity = 30
-var speed = 100
+var speed = 75
 
 func enter():
 	
@@ -26,8 +26,8 @@ func update(_delta):
 
 func fly_away(coll_dir):
 	
-	if !(coll_dir == Vector2.UP):
+	if coll_dir.y == 0:
 		velocity = speed * (-coll_dir+Vector2.UP)
+	elif coll_dir.y >= 0:
+		pass
 	
-	else:
-		velocity = speed*(-coll_dir)
